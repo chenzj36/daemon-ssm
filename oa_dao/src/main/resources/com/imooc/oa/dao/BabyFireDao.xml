@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.oa.dao.BabyFireDao">
+
+    <resultMap id="babyFire" type="BabyFire">
+        <id property="bf_id" column="bf_id" javaType="Integer"/>
+        <result property="bf_time" column="bf_time" javaType="String"/>
+        <result property="bf_data" column="bf_data" javaType="String"/>
+        <result property="bf_room" column="bf_room" javaType="String"/>
+        <result property="bf_bed" column="bf_bed" javaType="String"/>
+        <result property="b_companyid" column="b_companyid" javaType="String"/>
+    </resultMap>
+
+
+    <insert id="insert" parameterType="BabyFire">
+        insert into baby_fire values(#{bf_id},#{bf_time},#{bf_data},#{bf_room},#{bf_bed},#{bf_companyid})
+    </insert>
+
+    <update id="update" parameterType="BabyFire">
+        update baby_fire set bf_id=#{bf_id},bf_time=#{bf_time},bf_data=#{bf_data},bf_room=#{bf_room},bf_bed=#{bf_bed},bf_companyid=#{bf_companyid} where bf_id=#{bf_id}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        delete from baby_fire where bf_id=#{bf_id}
+    </delete>
+
+    <select id="select" parameterType="Integer" resultMap="babyFire">
+        select * from baby_fire where bf_id=#{bf_id}
+    </select>
+
+    <select id="selectAll" resultMap="babyFire">
+        select * from baby_fire
+    </select>
+
+</mapper>
